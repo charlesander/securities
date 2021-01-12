@@ -31,13 +31,13 @@ class FactRepository extends ServiceEntityRepository
     {
         $results = $this->createQueryBuilder('f')
             ->join('f.security', 's')
-        ->join('f.Attribute', 'a')
+            ->join('f.Attribute', 'a')
             ->andWhere('s.symbol = :security')
             ->andWhere('a.name = :attribute')
             ->setParameter('attribute', $attribute)
             ->setParameter('security', $security)
             ->getQuery()
             ->getOneOrNullResult();
-        return (float) $results->getValue();
+        return (float)$results->getValue();
     }
 }

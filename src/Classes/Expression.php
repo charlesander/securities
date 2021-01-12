@@ -7,6 +7,9 @@ use Exception;
 
 class Expression
 {
+    /**
+     * Allowed ways to manipulate the expression
+     */
     const VALID_OPERATORS = ['+', '-', '*', '/'];
 
     /**
@@ -35,6 +38,8 @@ class Expression
 
     /**
      * Expression constructor.
+     * Recursively build the Expression object while looking up the values of any attributes supplied
+     *
      * @param FactRepository $factRepository
      * @param string $security
      * @param array $expression
@@ -42,11 +47,16 @@ class Expression
      */
     public function __construct(FactRepository &$factRepository, string $security, array $expression)
     {
+        //As we're dealing with data that is 1) not type cast and 2) can either be a string or an array
+        // we shall have to handle validation at the point where the data comes into this object before
+        // it's mapped onto the object
         $this->validateExpressionValues($expression);
         $this->factRepository = $factRepository;
         $this->security = $security;
 
+        //Mapping the data onto the object
         $this->fn = $expression['fn'];
+        //Recursive
         $this->a = $this->calcArgumentValue($security, $expression['a']);
         $this->b = $this->calcArgumentValue($security, $expression['b']);
     }

@@ -44,6 +44,20 @@ php bin/console doctrine:migrations:migrate -n
 php bin/console import:csv data/attributes.csv,data/securities.csv,data/facts.csv # ensure this is only run once
 ```
 
+## Using app
+
+Please ensure you use the 'Content-Type application/json' with any requests.
+
+Endpoint: 
+```
+Content-Type application/json
+POST /dsl
+{
+  "expression": {"fn": "*", "a": "sales", "b": 2},
+  "security": "ABC"
+}
+
+```
 ##Run tests
 ```
 php ./bin/phpunit

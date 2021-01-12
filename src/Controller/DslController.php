@@ -12,6 +12,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class DslController extends AbstractController
 {
     /**
+     * This function takens the expression contained within the POST request body and maps it onto an
+     * Expression object. The expression object calculates the value for the expression and returns it.
+     * Example request:
+     * Content-Type application/json
+     * POST /dsl
+     * {
+     * "expression": {"fn": "*", "a": "sales", "b": 2},
+     * "security": "ABC"
+     * }
      * @Route("/dsl", name="dsl", methods={"POST"})
      */
     public function index(Request $request): Response

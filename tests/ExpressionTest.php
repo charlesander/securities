@@ -126,7 +126,8 @@ class ExpressionTest extends SetupTest
     /**
      * @test
      */
-    public function calcArgumentValue1(){
+    public function calcArgumentValue1()
+    {
         $factRepository = $this->entityManager->getRepository(Fact::class);
 
         $fn = "+";
@@ -148,14 +149,15 @@ class ExpressionTest extends SetupTest
         $this->assertEquals((float)$a, $value);
 
         $value = $expression->calcArgumentValue($requestParams['security'], $b);
-        $this->assertEquals($value,  12);// CDE sales = 12
+        $this->assertEquals($value, 12);// CDE sales = 12
 
     }
 
     /**
      * @test
      */
-    public function validateExpressionArgument1(){
+    public function validateExpressionArgument1()
+    {
         $factRepository = $this->entityManager->getRepository(Fact::class);
 
         $fn = "+";
@@ -185,7 +187,8 @@ class ExpressionTest extends SetupTest
     /**
      * @test
      */
-    public function validateExpressionFunctiontest1(){
+    public function validateExpressionFunctiontest1()
+    {
         $factRepository = $this->entityManager->getRepository(Fact::class);
 
         $fn = "+";
@@ -210,13 +213,13 @@ class ExpressionTest extends SetupTest
 
         $this->expectException(\Exception::class);
         $expression->validateExpressionFunction('h');
-
     }
 
     /**
      * @test
      */
-    public function validateExpressionValuestest1(){
+    public function validateExpressionValuestest1()
+    {
         $factRepository = $this->entityManager->getRepository(Fact::class);
 
         $fn = "+";
